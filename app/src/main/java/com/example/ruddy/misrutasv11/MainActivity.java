@@ -165,6 +165,65 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.container,mapFragment,"com.mapbox.map");
             transaction.commit();
 
+            mapFragment.getMapAsync(new OnMapReadyCallback() {
+                @Override
+                public void onMapReady(MapboxMap mapboxMap) {
+
+                    // Customize map with markers, polylines, etc.
+                    /*map = mapboxMap;
+
+                    new DrawGeoJson().execute();*/
+
+
+                    ArrayList<LatLng> points = new ArrayList<>();
+
+                    try {
+                        // Load GeoJSON file
+                        InputStream inputStream = getAssets().open("exampledos.geojson");
+                        BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+                        StringBuilder sb = new StringBuilder();
+                        int cp;
+                        while ((cp = rd.read()) != -1) {
+                            sb.append((char) cp);
+                        }
+
+                        inputStream.close();
+
+                        // Parse JSON
+                        JSONObject json = new JSONObject(sb.toString());
+                        JSONArray features = json.getJSONArray("features");
+                        JSONObject feature = features.getJSONObject(0);
+                        JSONObject geometry = feature.getJSONObject("geometry");
+                        if (geometry != null) {
+                            String type = geometry.getString("type");
+
+                            // Our GeoJSON only has one feature: a line string
+                            if (!TextUtils.isEmpty(type) && type.equalsIgnoreCase("LineString")) {
+
+                                // Get the Coordinates
+                                JSONArray coords = geometry.getJSONArray("coordinates");
+                                for (int lc = 0; lc < coords.length(); lc++) {
+                                    JSONArray coord = coords.getJSONArray(lc);
+                                    LatLng latLng = new LatLng(coord.getDouble(1), coord.getDouble(0));
+                                    points.add(latLng);
+                                }
+                            }
+                        }
+                    } catch (Exception exception) {
+                        //Log.e(TAG, "Exception Loading GeoJSON: " + exception.toString());
+                    }
+
+                    if (points.size() > 0) {
+
+                        // Draw polyline on map
+                        mapboxMap.addPolyline(new PolylineOptions()
+                                .addAll(points)
+                                .color(Color.parseColor("#3bb2d0"))
+                                .width(2));
+                    }
+                }
+            });
+
 
 
         } else if (id == R.id.nav_gallery) {
@@ -176,9 +235,75 @@ public class MainActivity extends AppCompatActivity
                     .target(cochabamba)
                     .zoom(14)
                     .build());
+
+
+
+
+
             mapFragment = SupportMapFragment.newInstance(options);
             transaction.replace(R.id.container,mapFragment,"com.mapbox.map");
             transaction.commit();
+
+            mapFragment.getMapAsync(new OnMapReadyCallback() {
+                @Override
+                public void onMapReady(MapboxMap mapboxMap) {
+
+                    // Customize map with markers, polylines, etc.
+                    /*map = mapboxMap;
+
+                    new DrawGeoJson().execute();*/
+
+
+                    ArrayList<LatLng> points = new ArrayList<>();
+
+                    try {
+                        // Load GeoJSON file
+                        InputStream inputStream = getAssets().open("exampledos.geojson");
+                        BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+                        StringBuilder sb = new StringBuilder();
+                        int cp;
+                        while ((cp = rd.read()) != -1) {
+                            sb.append((char) cp);
+                        }
+
+                        inputStream.close();
+
+                        // Parse JSON
+                        JSONObject json = new JSONObject(sb.toString());
+                        JSONArray features = json.getJSONArray("features");
+                        JSONObject feature = features.getJSONObject(0);
+                        JSONObject geometry = feature.getJSONObject("geometry");
+                        if (geometry != null) {
+                            String type = geometry.getString("type");
+
+                            // Our GeoJSON only has one feature: a line string
+                            if (!TextUtils.isEmpty(type) && type.equalsIgnoreCase("LineString")) {
+
+                                // Get the Coordinates
+                                JSONArray coords = geometry.getJSONArray("coordinates");
+                                for (int lc = 0; lc < coords.length(); lc++) {
+                                    JSONArray coord = coords.getJSONArray(lc);
+                                    LatLng latLng = new LatLng(coord.getDouble(1), coord.getDouble(0));
+                                    points.add(latLng);
+                                }
+                            }
+                        }
+                    } catch (Exception exception) {
+                        //Log.e(TAG, "Exception Loading GeoJSON: " + exception.toString());
+                    }
+
+                    if (points.size() > 0) {
+
+                        // Draw polyline on map
+                        mapboxMap.addPolyline(new PolylineOptions()
+                                .addAll(points)
+                                .color(Color.parseColor("#3bb2d0"))
+                                .width(2));
+                    }
+                }
+            });
+
+
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -194,6 +319,65 @@ public class MainActivity extends AppCompatActivity
             transaction.replace(R.id.container,mapFragment,"com.mapbox.map");
             transaction.commit();
 
+            mapFragment.getMapAsync(new OnMapReadyCallback() {
+                @Override
+                public void onMapReady(MapboxMap mapboxMap) {
+
+                    // Customize map with markers, polylines, etc.
+                    /*map = mapboxMap;
+
+                    new DrawGeoJson().execute();*/
+
+
+                    ArrayList<LatLng> points = new ArrayList<>();
+
+                    try {
+                        // Load GeoJSON file
+                        InputStream inputStream = getAssets().open("exampledos.geojson");
+                        BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+                        StringBuilder sb = new StringBuilder();
+                        int cp;
+                        while ((cp = rd.read()) != -1) {
+                            sb.append((char) cp);
+                        }
+
+                        inputStream.close();
+
+                        // Parse JSON
+                        JSONObject json = new JSONObject(sb.toString());
+                        JSONArray features = json.getJSONArray("features");
+                        JSONObject feature = features.getJSONObject(0);
+                        JSONObject geometry = feature.getJSONObject("geometry");
+                        if (geometry != null) {
+                            String type = geometry.getString("type");
+
+                            // Our GeoJSON only has one feature: a line string
+                            if (!TextUtils.isEmpty(type) && type.equalsIgnoreCase("LineString")) {
+
+                                // Get the Coordinates
+                                JSONArray coords = geometry.getJSONArray("coordinates");
+                                for (int lc = 0; lc < coords.length(); lc++) {
+                                    JSONArray coord = coords.getJSONArray(lc);
+                                    LatLng latLng = new LatLng(coord.getDouble(1), coord.getDouble(0));
+                                    points.add(latLng);
+                                }
+                            }
+                        }
+                    } catch (Exception exception) {
+                        //Log.e(TAG, "Exception Loading GeoJSON: " + exception.toString());
+                    }
+
+                    if (points.size() > 0) {
+
+                        // Draw polyline on map
+                        mapboxMap.addPolyline(new PolylineOptions()
+                                .addAll(points)
+                                .color(Color.parseColor("#3bb2d0"))
+                                .width(2));
+                    }
+                }
+            });
+
         } else if (id == R.id.nav_manage) {
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             LatLng cochabamba = new LatLng(-17.388591, -66.157334);
@@ -206,6 +390,66 @@ public class MainActivity extends AppCompatActivity
             mapFragment = SupportMapFragment.newInstance(options);
             transaction.replace(R.id.container,mapFragment,"com.mapbox.map");
             transaction.commit();
+
+
+            mapFragment.getMapAsync(new OnMapReadyCallback() {
+                @Override
+                public void onMapReady(MapboxMap mapboxMap) {
+
+                    // Customize map with markers, polylines, etc.
+                    /*map = mapboxMap;
+
+                    new DrawGeoJson().execute();*/
+
+
+                    ArrayList<LatLng> points = new ArrayList<>();
+
+                    try {
+                        // Load GeoJSON file
+                        InputStream inputStream = getAssets().open("exampledos.geojson");
+                        BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+                        StringBuilder sb = new StringBuilder();
+                        int cp;
+                        while ((cp = rd.read()) != -1) {
+                            sb.append((char) cp);
+                        }
+
+                        inputStream.close();
+
+                        // Parse JSON
+                        JSONObject json = new JSONObject(sb.toString());
+                        JSONArray features = json.getJSONArray("features");
+                        JSONObject feature = features.getJSONObject(0);
+                        JSONObject geometry = feature.getJSONObject("geometry");
+                        if (geometry != null) {
+                            String type = geometry.getString("type");
+
+                            // Our GeoJSON only has one feature: a line string
+                            if (!TextUtils.isEmpty(type) && type.equalsIgnoreCase("LineString")) {
+
+                                // Get the Coordinates
+                                JSONArray coords = geometry.getJSONArray("coordinates");
+                                for (int lc = 0; lc < coords.length(); lc++) {
+                                    JSONArray coord = coords.getJSONArray(lc);
+                                    LatLng latLng = new LatLng(coord.getDouble(1), coord.getDouble(0));
+                                    points.add(latLng);
+                                }
+                            }
+                        }
+                    } catch (Exception exception) {
+                        //Log.e(TAG, "Exception Loading GeoJSON: " + exception.toString());
+                    }
+
+                    if (points.size() > 0) {
+
+                        // Draw polyline on map
+                        mapboxMap.addPolyline(new PolylineOptions()
+                                .addAll(points)
+                                .color(Color.parseColor("#3bb2d0"))
+                                .width(2));
+                    }
+                }
+            });
 
         } else if (id == R.id.nav_share) {
 
