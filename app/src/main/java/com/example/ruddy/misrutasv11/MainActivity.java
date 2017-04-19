@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +19,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.FragmentTransaction;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
@@ -38,13 +41,15 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.reflect.TypeToken;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private MapboxMap map;
     private MapboxMapOptions options;
     private SupportMapFragment mapFragment;
-
+    protected Gson gson = new GsonBuilder().setDateFormat("yyyy-M-d HH:mm:ss").create();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,6 +155,20 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
+
+            /*Log.i(TAG+"JSON",response.toString());
+            JSONArray listaSubastasJson = response.getJSONArray("listaSubastas");
+            List<SubastaAux> listaSubastas = gson.fromJson(listaSubastasJson.toString(),new TypeToken<List<SubastaAux>>(){}.getType());
+            Log.i(TAG+"ArrayS",listaSubastas.toString());
+            subastaFragment.mostrarListaSubastas(listaSubastas);
+            progressDialog.dismiss();*/
+
+            /*Log.i(TAG+"JSON",response.toString());
+            JSONObject listaPrendasJson = response.getJSONObject("listaPrendas");
+            Prenda listaPrendas = gson.fromJson(listaPrendasJson.toString(),new TypeToken<Prenda>(){}.getType());
+            Log.i("listaPrendas",listaPrendas.toString());
+            itemSubastaFragment.cargarPrenda(listaPrendas);*/
+
             // Handle the camera action
 
             final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

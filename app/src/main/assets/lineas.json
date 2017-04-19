@@ -1,0 +1,12 @@
+{
+  "personas": [
+    {
+      "nombre": "132",
+      "archivo": "linea.geojson"
+    },
+    {
+      "nombre": "131",
+      "archivo": "lineados.geojson"
+    }
+  ]
+}
