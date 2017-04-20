@@ -43,6 +43,8 @@ import java.util.List;
 
 import com.google.gson.reflect.TypeToken;
 
+import fragments.ListaLineasFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -473,6 +475,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
+
+            mostrarFragmetListLineas();
+
         } else if (id == R.id.nav_send) {
 
         }
@@ -480,6 +485,15 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void mostrarFragmetListLineas()
+    {
+        ListaLineasFragment listaLineasFragment = new ListaLineasFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container,listaLineasFragment);
+        //fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
 
