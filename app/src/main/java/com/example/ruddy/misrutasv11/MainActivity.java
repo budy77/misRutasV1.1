@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
             LatLng cochabamba = new LatLng(-17.3333, -66.1667);
             //LatLng cochabamba = new LatLng(45.5076, -122.6736);
             options = new MapboxMapOptions();
-            options.styleUrl(Style.MAPBOX_STREETS);
+            options.styleUrl("mapbox://styles/budy777/cj1l7r7xt00052sqr95zp2bit");
             options.camera(new CameraPosition.Builder()
                     .target(cochabamba)
                     .zoom(11)
