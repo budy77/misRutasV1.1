@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_main);
 
-        Mapbox.getInstance(this,getString(R.string.access_token));
+        Mapbox.getInstance(this,getString(R.string.access_tokendos));
 
         if (savedInstanceState == null)
         {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
             LatLng cochabamba = new LatLng(-17.3333, -66.1667);
             //LatLng cochabamba = new LatLng(45.5076, -122.6736);
             options = new MapboxMapOptions();
-            options.styleUrl("mapbox://styles/budy777/cj1l7r7xt00052sqr95zp2bit");
+            options.styleUrl("mapbox://styles/budy777/cj1utr3b300022rmd2foas7qj");
             options.camera(new CameraPosition.Builder()
                     .target(cochabamba)
                     .zoom(11)
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity
                 // Customize map with markers, polylines, etc.
                 map = mapboxMap;
 
-                new DrawGeoJson().execute();
+                //new DrawGeoJson().execute();
             }
         });
 
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                map.clear();
             }
         });
 
@@ -190,9 +191,9 @@ public class MainActivity extends AppCompatActivity
                 public void onMapReady(MapboxMap mapboxMap) {
 
                     // Customize map with markers, polylines, etc.
-                    /*map = mapboxMap;
+                    map = mapboxMap;
 
-                    new DrawGeoJson().execute();*/
+
 
 
                     ArrayList<LatLng> points = new ArrayList<>();
