@@ -3,16 +3,20 @@ package adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.net.Uri;
+
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ruddy.misrutasv11.R;
@@ -24,6 +28,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -59,6 +64,7 @@ public class LineaAdapter extends ArrayAdapter<linea> {
         TextView titulo;
         TextView nombreLinea;
         TextView descripcionLinea;
+        ImageView imagenLinea;
     }
 
     @Override
@@ -73,7 +79,7 @@ public class LineaAdapter extends ArrayAdapter<linea> {
             viewHolder.titulo = (TextView)rowView.findViewById(R.id.titulo);
             viewHolder.nombreLinea = (TextView)rowView.findViewById(R.id.nombreLinea);
             viewHolder.descripcionLinea = (TextView)rowView.findViewById(R.id.descripcionLinea);
-
+            viewHolder.imagenLinea = (ImageView)rowView.findViewById(R.id.imagenTrufi);
 
             //importante agregado elemento
             rowView.setTag(viewHolder);
@@ -171,8 +177,11 @@ public class LineaAdapter extends ArrayAdapter<linea> {
         holder.titulo.setText(tituloLinea);
         holder.nombreLinea.setText(nombreLinea);
         holder.descripcionLinea.setText(descripcionLinea);
-
-
+        Uri path2 = Uri.parse("android.resource://com.example.ruddy.misrutasv11/" + R.drawable.maxresdefault);
+        Picasso.with(this.context)
+                .load(path2)
+                .resize(300,300)
+                .into(holder.imagenLinea);
         return rowView;
     }
 }
