@@ -2,12 +2,15 @@ package adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
 
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
@@ -28,6 +31,7 @@ import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.MapboxMapOptions;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
 import com.mapbox.mapboxsdk.maps.SupportMapFragment;
+import com.mapbox.mapboxsdk.storage.Resource;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -89,10 +93,11 @@ public class LineaAdapter extends ArrayAdapter<linea> {
         //se escoge el elemnto de la lista exacto
         final linea linea = listaLineas.get(position);
         //recogemos datoa de la linea especifica
-        String tituloLinea = linea.getNombre();
+        String tituloLinea = linea.getSindicato();
         String nombreLinea = linea.getNombre();
-        String descripcionLinea = linea.getNombre();
+        String descripcionLinea = linea.getDescripcionLinea();
         final String archivoLinea = linea.getArchivo();
+        String archivoImagen = linea.getImagenLinea();
 
 
         //evento click sobre el elemento de la lista
@@ -170,14 +175,29 @@ public class LineaAdapter extends ArrayAdapter<linea> {
                         }
                     }
                 });
+
+                FloatingActionButton fab = (FloatingActionButton) context.findViewById(R.id.fab);
+                fab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Snackbar.make(view, "Replace with your own action2222", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
+                        map.clear();
+                    }
+                });
             }
         });
+
+        Resources resource = context.getResources();
+        final int resourceId = resource.getIdentifier(archivoImagen,"drawable",context.getPackageName());
+
+
 
         //cargado de los datos a la vista
         holder.titulo.setText(tituloLinea);
         holder.nombreLinea.setText(nombreLinea);
         holder.descripcionLinea.setText(descripcionLinea);
-        Uri path2 = Uri.parse("android.resource://com.example.ruddy.misrutasv11/" + R.drawable.maxresdefault);
+        Uri path2 = Uri.parse("android.resource://com.example.ruddy.misrutasv11/"+resourceId);
         Picasso.with(this.context)
                 .load(path2)
                 .resize(300,300)

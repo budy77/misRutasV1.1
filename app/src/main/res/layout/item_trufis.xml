@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/mapbox_blue"
+        android:background="@drawable/fondo_item_lista"
         android:layout_marginTop="5dp"
         android:padding="7dp">
         <LinearLayout
@@ -31,13 +31,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Titulo"
                     android:id="@+id/titulo"
                     android:layout_weight="1"
+                    android:textAlignment="center"
+                    style="@style/tituloSubasta"
                     />
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -51,6 +53,7 @@
                         android:layout_weight="1"
                         android:id="@+id/nombreLinea"
                         android:text="Nombre de la Linea"
+                        style="@style/precioActualPujaSubasta"
                         />
                     <TextView
                         android:layout_width="match_parent"
@@ -60,7 +63,9 @@
                         android:gravity="top"
                         android:textSize="10dp"
                         android:id="@+id/descripcionLinea"
-                        android:text="Descripcion de la linea"/>
+                        android:text="Descripcion de la linea"
+                        style="@style/precioActualPujaSubasta"
+                        />
 
                 </LinearLayout>
 

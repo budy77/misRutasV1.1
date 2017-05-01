@@ -17,4 +17,130 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="subTituloLarge" parent="@android:style/TextAppearance.Large">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <style name="subTituloMedio" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:typeface">normal</item>
+        <!--<item name="android:textSize">12sp</item>-->
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="alerta">
+        <item name="android:textColor">@color/colorAlerta</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
+    <style name="spinner_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/gradient_spinner</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:popupBackground">@color/colorFondoInputPrimary</item>
+        <item name="android:textSize">10dp</item>
+    </style>
+
+    <style name="fuenteTickets">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/txtFont</item>/>
+    </style>
+
+
+
+
+    <style name="tituloSubasta">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/colorPrimary</item>/>
+    </style>
+    <style name="descripcionSubasta">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/txtFont</item>/>
+    </style>
+    <style name="precioInicalSubasta">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/txtFont</item>/>
+    </style>
+    <style name="vendedorSubasta">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textColor">@color/colorTitulo</item>/>
+    </style>
+    <style name="precioActualPujaSubasta">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/color_titulo_subasta</item>/>
+    </style>
+    <style name="descripcionPrecioActualPujaSubasta">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">8dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/color_titulo_subasta</item>/>
+    </style>
+
+    <style name="tituloEnlace">
+        <item name="android:textColor">@color/colorEnlace</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="tituloPopup">
+        <item name="android:textColor">@color/colorTitulo</item>
+        <item name="android:typeface">normal</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:gravity">left</item>
+    </style>
+
 </resources>

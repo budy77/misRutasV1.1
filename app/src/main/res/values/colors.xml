@@ -3,4 +3,35 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorBorde">#435055</color>
+    <color name="colorFondoInputPrimary">#B3BBCC</color>
+    <color name="colorFondoInputSecundary">#E8EBEF</color>
+
+    <color name="colorFondoItemListaPrimary">#F7FBFC</color>
+    <color name="colorFondoItemListaSecundary">#F7FBFC</color>
+    <color name="colorBordeItemListaSecundary">#B3BBCC</color>
+
+
+    <color name="colorBordePrecioInicial">#435055</color>
+    <color name="colorPrimaryPrecioInicial">#B3BBCC</color>
+    <color name="colorSecundaryPrecioInicial">#B3BBCC</color>
+
+    <color name="colorBordeEtrellas">#0091ea</color>
+
+
+    <color name="colorBoton">#ffffff</color>
+    <color name="colorEnlace">#e65100</color>
+
+    <color name="colorFondoLista">#E0E0E0</color>
+
+
+    <color name="colorAlerta">#FF0000</color>
+    <color name="colorTitulo">#3f51b5</color>
+    <color name="viewBackground">#e8ecfa</color>
+    <color name="txtFont">#4e5572</color>
+    <color name="white">#ffffff</color>
+    <color name="letraBtn">#ffffff</color>
+    <color name="color_text_one">#e65100</color>
+    <color name="color_titulo_subasta">#0091ea</color>
 </resources>

@@ -22,7 +22,7 @@ public class LineasService {
     {
         List<linea> listaLineas = new ArrayList<linea>();
 
-        linea lineaUno = new linea("Linea 132","ruta132_v1.geojson");
+        linea lineaUno = new linea("Linea 132","Sindicato San Miguel","La linea se fundo en 1994, con 20 lineas iniciales cubriendo las necesidades de transporte de la zona de Valle hermoso","ruta132_v1.geojson","maxresdefault");
         /*lineaUno.setNombre("Linea 132");
         lineaUno.setArchivo("archivoUnoo.geojson");*/
         listaLineas.add(lineaUno);
