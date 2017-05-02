@@ -34,7 +34,7 @@
             </ListView>
 
         </LinearLayout>
-        <Button
+<!--        <Button
             android:text="Cargar más lineas"
             android:textAlignment="center"
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:layout_weight="1"
             android:id="@+id/cargarMasLineas"
             android:padding="0dp"
-            android:textSize="14dp"/>
+            android:textSize="14dp"/>-->
 
     </LinearLayout>
 
