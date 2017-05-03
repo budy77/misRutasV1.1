@@ -1,6 +1,7 @@
 package fragments;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -27,6 +28,7 @@ public class ListaLineasFragment extends Fragment {
     private List<linea> listaLineas;
     ListView listView;
     LineasService lineasService;
+    Parcelable state;
     public ListaLineasFragment()
     {
 
@@ -60,6 +62,7 @@ public class ListaLineasFragment extends Fragment {
                 Log.i("posiScr",topRowVerticalPosition+"-");*/
                 if (firstVisibleItem + visibleItemCount == totalItemCount)
                 {
+                    state = listView.onSaveInstanceState();
                     agregarMasLineasLlamadoServicio();
                     Log.i("posiScr","se carga mas elemntos a la vista");
                 }
@@ -95,6 +98,7 @@ public class ListaLineasFragment extends Fragment {
         }
         LineaAdapter lineaAdapter = new LineaAdapter(getActivity(),this.listaLineas);
         listView.setAdapter(lineaAdapter);
+        listView.onRestoreInstanceState(state);
     }
 
 }

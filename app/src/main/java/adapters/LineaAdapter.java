@@ -57,6 +57,7 @@ public class LineaAdapter extends ArrayAdapter<linea> {
     private MapboxMap map;
     private MapboxMapOptions options;
     private SupportMapFragment mapFragment;
+    private boolean bandera = true;
 
     public LineaAdapter( Activity context, List<linea> objects) {
         super(context, R.layout.item_trufis,objects);
@@ -97,8 +98,8 @@ public class LineaAdapter extends ArrayAdapter<linea> {
         String nombreLinea = linea.getNombre();
         String descripcionLinea = linea.getDescripcionLinea();
         final String archivoLinea = linea.getArchivo();
+        final String archivoLineaDos = linea.getArchivoDos();
         String archivoImagen = linea.getImagenLinea();
-
 
         //evento click sobre el elemento de la lista
         rowView.setOnClickListener(new View.OnClickListener() {
@@ -180,9 +181,25 @@ public class LineaAdapter extends ArrayAdapter<linea> {
                 fab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Snackbar.make(view, "Replace with your own action2222", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
+
+
                         map.clear();
+                        if (bandera == true)
+                        {
+                            crearNuevaRuta(archivoLineaDos,"#FA0011");
+                            bandera = false;
+                            Snackbar.make(view, "Ruta Sur-Norte", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        }
+                        else
+                        {
+                            crearNuevaRuta(archivoLinea,"#3bb2d0");
+                            bandera = true;
+                            Snackbar.make(view, "Ruta Norte-Sur", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        }
+
+
                     }
                 });
             }
@@ -203,5 +220,56 @@ public class LineaAdapter extends ArrayAdapter<linea> {
                 .resize(300,300)
                 .into(holder.imagenLinea);
         return rowView;
+    }
+
+
+    public void crearNuevaRuta(String archivoLineaDos,String color)
+    {
+        ArrayList<LatLng> points = new ArrayList<>();
+
+        try {
+            // Load GeoJSON file
+            InputStream inputStream = this.getContext().getAssets().open(archivoLineaDos);
+            BufferedReader rd = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+            StringBuilder sb = new StringBuilder();
+            int cp;
+            while ((cp = rd.read()) != -1) {
+                sb.append((char) cp);
+            }
+
+            inputStream.close();
+
+            // Parse JSON
+            JSONObject json = new JSONObject(sb.toString());
+            JSONArray features = json.getJSONArray("features");
+            JSONObject feature = features.getJSONObject(0);
+            JSONObject geometry = feature.getJSONObject("geometry");
+            if (geometry != null) {
+                String type = geometry.getString("type");
+
+                // Our GeoJSON only has one feature: a line string
+                if (!TextUtils.isEmpty(type) && type.equalsIgnoreCase("LineString")) {
+
+                    // Get the Coordinates
+                    JSONArray coords = geometry.getJSONArray("coordinates");
+                    for (int lc = 0; lc < coords.length(); lc++) {
+                        JSONArray coord = coords.getJSONArray(lc);
+                        LatLng latLng = new LatLng(coord.getDouble(1), coord.getDouble(0));
+                        points.add(latLng);
+                    }
+                }
+            }
+        } catch (Exception exception) {
+            Log.e("ErFi", "Exception Loading GeoJSON: " + exception.toString());
+        }
+
+        if (points.size() > 0) {
+            //Log.i("lleg", "llego al mapa"+points.size());
+            // Draw polyline on map
+            map.addPolyline(new PolylineOptions()
+                    .addAll(points)
+                    .color(Color.parseColor(color))
+                    .width(2));
+        }
     }
 }

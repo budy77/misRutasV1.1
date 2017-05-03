@@ -9,13 +9,15 @@ public class linea {
     String sindicato;
     String descripcionLinea;
     String archivo;
+    String archivoDos;
     String imagenLinea;
 
-    public linea(String nombre, String sindicato, String descripcionLinea, String archivo, String imagenLinea) {
+    public linea(String nombre, String sindicato, String descripcionLinea, String archivo, String archivoDos, String imagenLinea) {
         this.nombre = nombre;
         this.sindicato = sindicato;
         this.descripcionLinea = descripcionLinea;
         this.archivo = archivo;
+        this.archivoDos = archivoDos;
         this.imagenLinea = imagenLinea;
     }
 
@@ -51,6 +53,14 @@ public class linea {
         this.archivo = archivo;
     }
 
+    public String getArchivoDos() {
+        return archivoDos;
+    }
+
+    public void setArchivoDos(String archivoDos) {
+        this.archivoDos = archivoDos;
+    }
+
     public String getImagenLinea() {
         return imagenLinea;
     }
@@ -66,6 +76,7 @@ public class linea {
                 ", sindicato='" + sindicato + '\'' +
                 ", descripcionLinea='" + descripcionLinea + '\'' +
                 ", archivo='" + archivo + '\'' +
+                ", archivoDos='" + archivoDos + '\'' +
                 ", imagenLinea='" + imagenLinea + '\'' +
                 '}';
     }
