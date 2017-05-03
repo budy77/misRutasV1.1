@@ -29,6 +29,8 @@ public class ListaLineasFragment extends Fragment {
     ListView listView;
     LineasService lineasService;
     Parcelable state;
+    private int pos = 10;
+    private LineaAdapter lineaAdapter;
     public ListaLineasFragment()
     {
 
@@ -58,13 +60,12 @@ public class ListaLineasFragment extends Fragment {
 
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                /*int topRowVerticalPosition = (listView == null || listView.getChildCount() != 0)? 0: listView.getChildAt(0).getTop();
-                Log.i("posiScr",topRowVerticalPosition+"-");*/
+
                 if (firstVisibleItem + visibleItemCount == totalItemCount)
                 {
                     state = listView.onSaveInstanceState();
                     agregarMasLineasLlamadoServicio();
-                    Log.i("posiScr","se carga mas elemntos a la vista");
+                    //Log.i("posiScr","se carga mas elemntos a la vista");
                 }
 
             }
@@ -80,7 +81,7 @@ public class ListaLineasFragment extends Fragment {
     public void mostrarLineas(List<linea> listaLineas)
     {
         this.listaLineas = listaLineas;
-        LineaAdapter lineaAdapter = new LineaAdapter(this.getActivity(),this.listaLineas);
+        this.lineaAdapter = new LineaAdapter(this.getActivity(),this.listaLineas);
         listView.setAdapter(lineaAdapter);
 
     }
@@ -90,15 +91,20 @@ public class ListaLineasFragment extends Fragment {
         this.lineasService.getMoreListaLineas(this);
     }
 
-    public void agregarMasLineas(List<linea> listaLineas)
+    public void agregarMasLineas(List<linea> listaLineasAdd)
     {
-        for (int i=0;i<listaLineas.size();i++)
+        for (int i=0;i<listaLineasAdd.size();i++)
         {
-            this.listaLineas.add(listaLineas.get(i));
+            this.listaLineas.add(listaLineasAdd.get(i));
         }
-        LineaAdapter lineaAdapter = new LineaAdapter(getActivity(),this.listaLineas);
-        listView.setAdapter(lineaAdapter);
-        listView.onRestoreInstanceState(state);
+
+        this.lineaAdapter.notifyDataSetChanged();
+        //this.lineaAdapter = new LineaAdapter(this.getActivity(),this.listaLineas);
+        //this.listView.setAdapter(null);
+        //this.listView.setAdapter(lineaAdapter);
+        //listView.setSelection(pos);
+        //pos = pos +10;
+        this.listView.onRestoreInstanceState(state);
     }
 
 }
