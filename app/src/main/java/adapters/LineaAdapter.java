@@ -109,7 +109,7 @@ public class LineaAdapter extends ArrayAdapter<linea> {
                 final FragmentTransaction transaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
                 LatLng cochabamba = new LatLng(-17.388591, -66.157334);
                 options = new MapboxMapOptions();
-                options.styleUrl(Style.SATELLITE);
+                options.styleUrl(Style.MAPBOX_STREETS);
                 options.camera(new CameraPosition.Builder()
                         .target(cochabamba)
                         .zoom(14)

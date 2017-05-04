@@ -8,19 +8,19 @@
 			"imagenLinea":"maxresdefault"
 		},
 		{
-			"nombre":"Linea 132",
+			"nombre":"Linea 132 Santa Vera Cruz",
 			"sindicato":"San Miguel",
-			"descripcionLinea":"La linea 132 fue fundada en 1994 contando con 40 trufis para el servicio de transporte publico en la zona sur de Valle Hermoso",
-			"archivo":"ruta132_v1.geojson",
-			"archivoDos":"ruta132_v2.geojson",
+			"descripcionLinea":"La linea 132 ingreso a la zona de Nueva Vera Cruz el año 2016, cubriendo la ruta universitaria",
+			"archivo":"ruta132vc_v1.geojson",
+			"archivoDos":"ruta132vc_v2.geojson",
 			"imagenLinea":"maxresdefault"
 		},
 		{
-			"nombre":"Linea 132",
+			"nombre":"Linea 131",
 			"sindicato":"San Miguel",
-			"descripcionLinea":"La linea 132 fue fundada en 1994 contando con 40 trufis para el servicio de transporte publico en la zona sur de Valle Hermoso",
-			"archivo":"ruta132_v1.geojson",
-			"archivoDos":"ruta132_v2.geojson",
+			"descripcionLinea":"La linea 131 fue fundada en 2003 contando con 40 trufis para el servicio de transporte publico en la zona sur de Valle Hermoso",
+			"archivo":"ruta131_v1.geojson",
+			"archivoDos":"ruta131_v2.geojson",
 			"imagenLinea":"maxresdefault"
 		},
 		{
