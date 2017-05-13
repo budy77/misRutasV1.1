@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ruddy.misrutasv11.R;
+import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.annotations.PolylineOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.constants.Style;
@@ -174,6 +175,11 @@ public class LineaAdapter extends ArrayAdapter<linea> {
                                     .color(Color.parseColor("#3bb2d0"))
                                     .width(2));
                         }
+
+                        mapboxMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(-17.388503, -66.157241))
+                                .title("Hello World!")
+                                .snippet("Welcome to my marker."));
                     }
                 });
 
@@ -271,5 +277,10 @@ public class LineaAdapter extends ArrayAdapter<linea> {
                     .color(Color.parseColor(color))
                     .width(2));
         }
+
+        map.addMarker(new MarkerOptions()
+                .position(new LatLng(-17.388503, -66.157241))
+                .title("Hello World!")
+                .snippet("Welcome to my marker."));
     }
 }
