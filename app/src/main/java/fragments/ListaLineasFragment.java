@@ -55,6 +55,8 @@ public class ListaLineasFragment extends Fragment {
         final LineasService lineasService = new LineasService(this.getActivity());
         this.lineasService = lineasService;
         lineasService.getListaLineas(this,cantidadMostrar,cantidadSalto);
+        lineasService.getListaLineasDos(this,0,10);
+        lineasService.getRutaByLinea(this,0,10);
 
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
