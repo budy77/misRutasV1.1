@@ -42,6 +42,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.reflect.TypeToken;
+import com.mapbox.mapboxsdk.style.layers.RasterLayer;
+import com.mapbox.mapboxsdk.style.sources.RasterSource;
+import com.mapbox.mapboxsdk.style.sources.TileSet;
 
 import fragments.ListaLineasFragment;
 
@@ -66,7 +69,8 @@ public class MainActivity extends AppCompatActivity
             LatLng cochabamba = new LatLng(-17.3333, -66.1667);
             //LatLng cochabamba = new LatLng(45.5076, -122.6736);
             options = new MapboxMapOptions();
-            options.styleUrl("mapbox://styles/budy777/cj1utr3b300022rmd2foas7qj");
+            //options.styleUrl("mapbox://styles/budy777/cj1utr3b300022rmd2foas7qj");
+            options.styleUrl(Style.MAPBOX_STREETS);
             options.camera(new CameraPosition.Builder()
                     .target(cochabamba)
                     .zoom(11)
@@ -88,6 +92,76 @@ public class MainActivity extends AppCompatActivity
 
                 // Customize map with markers, polylines, etc.
                 map = mapboxMap;
+
+                String urlEnviar = "http://192.241.189.44/mapcache?layers=tileset_uso_suelo_l_20170513140544&format=image/png&version=1.3.0";
+                /*RasterSource webMapSource = new RasterSource(
+                        "web-map-source",
+                        new TileSet("tileset", "https://geodata.state.nj.us/imagerywms/Natural2015?bbox={"
+                                + "bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&"
+                                + "srs=EPSG:3857&width=256&height=256&layers=Natural2015"), 256);*/
+                RasterSource webMapSource = new RasterSource(
+                        "web-map-source",
+                        new TileSet("tileset", "http://192.241.189.44/mapcache?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=tileset_limitecercado_20170418202932&WIDTH=256&HEIGHT=256&CRS=EPSG:3857&STYLES=&BBOX={bbox-epsg-3857}"), 256);
+
+                mapboxMap.addSource(webMapSource);
+
+                RasterSource webMapSourceTwo = new RasterSource(
+                        "web-map-source-two",
+                        new TileSet("tileset", "http://192.241.189.44/mapcache?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=tileset_uso_suelo19_20170418195531&WIDTH=256&HEIGHT=256&CRS=EPSG:3857&STYLES=&BBOX={bbox-epsg-3857}"), 256);
+
+                mapboxMap.addSource(webMapSourceTwo);
+
+                RasterSource webMapSourceThree = new RasterSource(
+                        "web-map-source-three",
+                        new TileSet("tileset", "http://192.241.189.44/mapcache?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=tileset_uso_ext19&WIDTH=256&HEIGHT=256&CRS=EPSG:3857&STYLES=&BBOX={bbox-epsg-3857}"), 256);
+
+                mapboxMap.addSource(webMapSourceThree);
+
+                RasterSource webMapSourceFour = new RasterSource(
+                        "web-map-source-four",
+                        new TileSet("tileset", "http://192.241.189.44/mapcache?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=tileset_rios19&WIDTH=256&HEIGHT=256&CRS=EPSG:3857&STYLES=&BBOX={bbox-epsg-3857}"), 256);
+
+                mapboxMap.addSource(webMapSourceFour);
+
+                RasterSource webMapSourceFive = new RasterSource(
+                        "web-map-source-five",
+                        new TileSet("tileset", "http://192.241.189.44/mapcache?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=tileset_lagunas19_20170420191010&WIDTH=256&HEIGHT=256&CRS=EPSG:3857&STYLES=&BBOX={bbox-epsg-3857}"), 256);
+                mapboxMap.addSource(webMapSourceFive);
+
+                RasterSource webMapSourceSix = new RasterSource(
+                        "web-map-source-six",
+                        new TileSet("tileset", "http://192.241.189.44/mapcache?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=tileset_sitios19_20170418163318&WIDTH=256&HEIGHT=256&CRS=EPSG:3857&STYLES=&BBOX={bbox-epsg-3857}"), 256);
+                mapboxMap.addSource(webMapSourceSix);
+
+                RasterSource webMapSourceSeven = new RasterSource(
+                        "web-map-source-seven",
+                        new TileSet("tileset", "http://192.241.189.44/mapcache?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image/png&TRANSPARENT=true&LAYERS=tileset_vias19_20170418192020&WIDTH=256&HEIGHT=256&CRS=EPSG:3857&STYLES=&BBOX={bbox-epsg-3857}"), 256);
+                mapboxMap.addSource(webMapSourceSeven);
+
+
+                // Add the web map source to the map.
+                RasterLayer webMapLayer = new RasterLayer("web-map-layer", "web-map-source");
+                mapboxMap.addLayerBelow(webMapLayer, "aeroway-taxiway");
+
+                RasterLayer webMapLayerTwo = new RasterLayer("web-map-layer-two", "web-map-source-two");
+                mapboxMap.addLayerBelow(webMapLayerTwo, "aeroway-taxiway");
+
+                RasterLayer webMapLayerThree = new RasterLayer("web-map-layer-three", "web-map-source-three");
+                mapboxMap.addLayer(webMapLayerThree);
+
+                RasterLayer webMapLayerFour = new RasterLayer("web-map-layer-four", "web-map-source-four");
+                mapboxMap.addLayer(webMapLayerFour);
+
+                RasterLayer webMapLayerFive = new RasterLayer("web-map-layer-five", "web-map-source-five");
+                mapboxMap.addLayer(webMapLayerFive);
+
+                RasterLayer webMapLayerSix = new RasterLayer("web-map-layer-six", "web-map-source-six");
+                mapboxMap.addLayer(webMapLayerSix);
+
+
+                RasterLayer webMapLayerSeven = new RasterLayer("web-map-layer-seven", "web-map-source-seven");
+                mapboxMap.addLayer(webMapLayerSeven);
+
 
                 //new DrawGeoJson().execute();
             }
